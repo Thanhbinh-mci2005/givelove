@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>givelove - Trang chủ</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+          text-decoration: none;
+          color: #333;
+          font-size: 16px;
+          margin: 0 20px;
+          position: relative;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        nav a:hover {
+          transform: translateY(-5px); /* Nâng lên khi hover */
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bóng nhẹ khi hover */
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .donate-button {
+            background-color: #365486;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .donate-button:hover {
+            background-color: #d10000;
+        }
+
+        /* Banner Carousel Section */
+        .carousel {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            z-index: 2; /* Ensure the buttons are on top */
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev {
+            left: 0;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .carousel-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            width: 100%;
+
+            /* Animation properties */
+            opacity: 0; /* Start with invisible */
+            animation: fadeIn 2s ease-in-out forwards; /* Apply animation */
+        }
+
+        /* Keyframes for fadeIn effect */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -40%); /* Slightly offset vertically */
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%); /* Final centered position */
+            }
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            z-index: 3; /* Ensure the dots are clickable */
+        }
+
+        .carousel-indicators .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #717171;
+        }
+
+    </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+      <nav>
+          <div class="logo">
+              <a href="index.html"><img src="z5942590383156_5619bbf6d5490789903ade2929e71df9.jpg" alt="Give Now Logo"></a>
+          </div>
+          <div class="menu">
+              <a href="index.html">Trang chủ</a>
+              <a href="du-an.php">Dự án</a>
+              <a href="ve-chung-toi.html">Về chúng tôi</a>
+              <a href="huong-dan.html">Hướng dẫn</a>
+          </div>
+          <div class="auth">
+              <a href="ung-ho-ngay.html" class="donate-button">Ủng hộ ngay</a>
+              <a href="dang-nhap.php">Đăng nhập</a>
+          </div>
+      </nav>
+  </header>
+
+  <!-- Banner Carousel -->
+  <div class="carousel">
+      <div class="carousel-images" id="carouselImages">
+        <img src="z5942219051099_65add34001c205c6226be2af6618b3cf (1) (1).jpg" alt="Banner 1">
+        <img src="z5942942874707_a04099bed0544a35f8ab32e4ec8534c1.jpg" alt="Banner 2">
+        <img src="10.png" alt="Banner 3">
+      </div>
+      <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
+      <a class="next" onclick="moveSlide(1)">&#10095;</a>
+
+      <div class="carousel-indicators" id="carouselDots">
+          <span class="dot" onclick="currentSlide(0)"></span>
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+      </div>
+
+      <div class="carousel-text">
+          CHUNG TAY HỖ TRỢ NGƯỜI DÂN CHỊU ẢNH HƯỞNG BÃO SỐ 3
+      </div>
+  </div>
+
+  <!-- JavaScript for Carousel -->
+  <script>
+      let slideIndex = 0;
+      const slides = document.querySelectorAll('.carousel-images img');
+      const dots = document.querySelectorAll('.dot');
+
+      function moveSlide(n) {
+          slideIndex += n;
+          if (slideIndex >= slides.length) slideIndex = 0;
+          if (slideIndex < 0) slideIndex = slides.length - 1;
+          updateSlide();
+      }
+
+      function currentSlide(n) {
+          slideIndex = n;
+          updateSlide();
+      }
+
+      function updateSlide() {
+          const width = slides[0].clientWidth;
+          document.getElementById('carouselImages').style.transform = `translateX(${-width * slideIndex}px)`;
+
+          dots.forEach(dot => dot.classList.remove('active'));
+          dots[slideIndex].classList.add('active');
+      }
+
+      setInterval(() => moveSlide(1), 5000); // Auto slide every 5 seconds
+
+      window.onload = updateSlide; // Initialize carousel on load
+  </script>
+
+</body>
+</html>
+<!-- Yagi Storm Section -->
+<div class="storm-section">
+    <div class="container">
+        <h2 class="section-title">Bão Yagi – Một trong những cơn bão mạnh nhất gây thiệt hại nặng nề</h2>
+        <div class="storm-content">
+            <div class="storm-text">
+                <p style="text-align:justify">Bão Yagi là một trong những cơn bão lớn nhất trong năm, đổ bộ vào nhiều tỉnh thành của Việt Nam với sức gió lên tới 120 km/h. Cơn bão đã gây ra mưa lớn kéo dài, lũ quét, và sạt lở đất trên diện rộng, làm nhiều khu vực bị cô lập. Đời sống của hàng chục nghìn người dân đã bị ảnh hưởng nghiêm trọng, nhiều gia đình mất nhà cửa và đang phải sống trong tình trạng thiếu thốn.</p>
+                <p style="text-align:justify">Chúng tôi kêu gọi sự chung tay góp sức của cộng đồng để hỗ trợ những người dân gặp khó khăn vượt qua giai đoạn này. Dưới đây là một số thông tin về thiệt hại do bão Yagi gây ra:</p>
+                <ul class="storm-damage-list">
+                    <li><strong>Thiệt hại tài sản:</strong> 500 ngôi nhà bị phá hủy, 3000 ha hoa màu bị ngập lụt</li>
+                    <li><strong>Người bị ảnh hưởng:</strong> Hơn 10,000 người dân phải sơ tán</li>
+                    <li><strong>Số tiền cần thiết để hỗ trợ:</strong> 20 tỷ VNĐ</li>
+                </ul>
+                <div class="storm-fund-status">
+                    <h3>Số tiền đã gây quỹ: <span>Đang cập nhật</span></h3>
+                    <div class="storm-progress-bar">
+                        <div class="storm-progress" style="width: 0%;"></div>
+                    </div>
+                </div>
+                <a href="ung-ho-ngay.html" class="storm-donate-button">Ủng Hộ Ngay</a>
+            </div>
+            <div class="storm-images">
+                <img src="z5943117057046_6dec8448f390f4ae2fb5cad51f7fa634.jpg" alt="Thiệt hại bão Yagi" />
+                <img src="z5943117057105_30432673a61bf0b30ed875da57b5f721.jpg" alt="Người dân bị ảnh hưởng" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Styles for Storm Section -->
+<style>
+    .storm-section {
+        background-color: #f2f4f8;
+        padding: 60px 0;
+    }
+
+    .storm-section .section-title {
+        font-size: 36px;
+        text-align: center;
+        margin-bottom: 40px;
+        color: #365486;
+        font-weight: bold;
+    }
+
+    .storm-section .storm-content {
+        display: flex;
+        gap: 40px;
+        align-items: flex-start;
+    }
+
+    .storm-section .storm-text {
+        flex: 1.5;
+        color: #333;
+        font-size: 18px;
+    }
+
+    .storm-section .storm-text p {
+        margin-bottom: 20px;
+    }
+
+    .storm-section .storm-damage-list {
+        list-style-type: none;
+        padding-left: 0;
+        margin-bottom: 20px;
+    }
+
+    .storm-section .storm-damage-list li {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #555;
+    }
+
+    .storm-section .storm-damage-list strong {
+        color: #365486;
+    }
+
+    .storm-section .storm-fund-status {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .storm-section .storm-fund-status h3 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .storm-section .storm-fund-status span {
+        font-size: 28px;
+        color: #365486;
+        font-weight: bold;
+    }
+
+    .storm-section .storm-progress-bar {
+        width: 100%;
+        background-color: #ddd;
+        height: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+        overflow: hidden;
+    }
+
+    .storm-section .storm-progress {
+        height: 100%;
+        background-color: #e74c3c;
+    }
+
+    .storm-section .storm-donate-button {
+        display: inline-block;
+        background-color: #365486;
+        color: white;
+        padding: 12px 25px;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+
+    .storm-section .storm-donate-button:hover {
+        background-color: #d62f2f;
+    }
+
+    .storm-section .storm-images {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .storm-section .storm-images img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    /*phần tin tức*/
+    .news-section {
+    padding: 60px 0;
+    background-color: #365486; /* Màu nền cho phần tin tức */
+    text-align: center;
+}
+
+.section-title {
+    font-size: 45px;
+    color: #ffffff;
+    margin-bottom: 40px;
+    margin-top: -10px;
+}
+
+.news-grid {
+    display: flex;
+    justify-content: space-around; /* Căn giữa các tin tức */
+    flex-wrap: wrap; /* Cho phép các tin tức xuống dòng */
+}
+
+.news-item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px; /* Đặt chiều rộng cố định cho mỗi tin tức */
+    margin: 10px; /* Khoảng cách giữa các tin tức */
+}
+
+.news-item img {
+    width: 100%; /* Đảm bảo hình ảnh chiếm hết chiều rộng */
+    length: 200px;
+    border-radius: 10px;
+}
+
+.news-item h3 {
+    font-size: 20px;
+    margin: 15px 0;
+}
+
+.news-item p {
+    font-size: 16px;
+    color: #555;
+}
+
+.read-more {
+    display: inline-block;
+    background-color: #365486;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.read-more:hover {
+    background-color: #d10000; /* Đổi màu khi hover */
+}
+
+</style>
+<!-- News Section -->
+<div class="news-section">
+    <div class="container">
+        <h2 class="section-title">Tin Tức Mới Nhất</h2>
+        <div class="news-grid">
+            <div class="news-item">
+                <img src="bão 1.png" alt="Hậu quả thảm khốc sau bão Yagi: 200 người chết và mất tích">
+                <h3>Hậu quả sau bão Yagi: 200 người chết và mất tích</h3>
+                <p style="text-align: justify">Sau bão số 3 (bão Yagi), người dân miền Bắc vẫn đang chật vật đối phó với lũ lụt và sạt lở nghiêm trọng. Những con số thiệt hại không ngừng tăng, và tình hình ngày càng thảm khốc.</p>
+                <br><br><br><br><br>
+                <a href="https://thanhnien.vn/hau-qua-tham-khoc-sau-bao-yagi-200-nguoi-chet-va-mat-tich-185240911083100514.htm" class="read-more">Đọc thêm</a>
+            </div>
+            <div class="news-item">
+                <img src="bão 2.jpg" alt="Cộng đồng quốc tế sẵn sàng giúp Việt Nam khắc phục hậu quả bão Yagi">
+                <h3>Cộng đồng quốc tế sẵn sàng giúp Việt Nam khắc phục hậu quả bão Yagi</h3>
+                <p style="text-align: justify">Siêu bão Yagi (bão số 3) với sức tàn phá khủng khiếp đã gây ra những thiệt hại vô cùng nặng nề về người và tài sản mà chưa thể thống kê hết vào lúc này. Trong lúc cả nước trên dưới đồng lòng, cả hệ thống chính trị, triệu người như một cùng huy động mọi nguồn lực khẩn trương khắc phục hậu quả thiên tai...</p>
+                <a href="https://baotayninh.vn/cong-dong-quoc-te-san-sang-giup-viet-nam-khac-phuc-hau-qua-bao-yagi-a178489.html" class="read-more">Đọc thêm</a>
+            </div>
+            <div class="news-item">
+                <img src="bão 3.png" alt="Quảng Ninh khẩn trương khắc phục hậu quả của bão Yagi">
+                <h3>Quảng Ninh khẩn trương khắc phục hậu quả của bão Yagi</h3>
+                <p style="text-align: justify">Có người rơi nước mắt vì người thân gặp nạn khi ra đường vào lúc tâm bão, có người bật khóc vì tài sản của gia đình bị thiệt hại nặng nề.</p>
+                <br><br><br><br><br>
+                <a href="https://cand.com.vn/doi-song/quang-ninh-khan-truong-khac-phuc-hau-qua-cua-bao-yagi-i743022/" class="read-more">Đọc thêm</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+  <!DOCTYPE html>
+  <html lang="vi">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Contact Us - GiveLove</title>
+      <style>
+          body {
+              font-family: Arial, sans-serif;
+              background-color: #f4f4f4;
+              color: #333;
+              margin: 0;
+              padding: 0;
+          }
+
+          header {
+
+              color: white;
+              padding: 5px;
+              text-align: center;
+          }
+
+          .contact-container {
+              max-width: 800px;
+              margin: 50px auto;
+              background-color: white;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          }
+
+          h2 {
+              text-align: center;
+              margin-bottom: 20px;
+          }
+
+          .contact-form {
+              display: flex;
+              flex-direction: column;
+          }
+
+          .contact-form label {
+              margin-bottom: 5px;
+              font-weight: bold;
+          }
+
+          .contact-form input,
+          .contact-form textarea {
+              padding: 10px;
+              margin-bottom: 15px;
+              border-radius: 5px;
+              border: 1px solid #ccc;
+              width: 100%;
+          }
+
+          .contact-form textarea {
+              height: 150px;
+          }
+
+          .contact-form button {
+              padding: 10px 20px;
+              background-color: #365486;
+              color: white;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              font-size: 16px;
+          }
+
+          .contact-form button:hover {
+              background-color: #d10000;
+          }
+
+          .social-links {
+              text-align: center;
+              margin-top: 30px;
+          }
+
+          .social-links a {
+              margin: 0 10px;
+              text-decoration: none;
+          }
+
+          .social-links img {
+              width: 40px;
+              height: 40px;
+          }
+
+          footer {
+              text-align: center;
+              padding: 20px;
+              background-color: #365486;
+              color: white;
+          }
+      </style>
+  </head>
+  <body>
+
+      <header>
+          <h1>Liên hệ với GiveLove</h1>
+      </header>
+
+      <div class="contact-container">
+          <h2>Chúng tôi luôn sẵn sàng lắng nghe!</h2>
+          <form class="contact-form" action="givelove/index.html" method="get">
+              <label for="name">Tên đầy đủ:</label>
+              <input type="text" id="name" name="name" required>
+
+              <label for="email">Địa chỉ Email:</label>
+              <input type="email" id="email" name="email" required>
+
+              <label for="subject">Chủ đề:</label>
+              <input type="text" id="subject" name="subject" required>
+
+              <label for="message">Tin nhắn:</label>
+              <textarea id="message" name="message" required></textarea>
+
+              <button type="submit">Gửi tin nhắn</button>
+          </form>
+          <div class="social-links">
+                  <h3>Kết nối với chúng tôi</h3>
+                  <a href="https://www.facebook.com" target="_blank">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+                  </a>
+                  <a href="https://www.instagram.com" target="_blank">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                  </a>
+                  <a href="https://www.youtube.com" target="_blank">
+                     <img src="R.png" alt="YouTube">
+                  </a>
+              </div>
+          </div>
+
+          <footer style="background-color: #365486; padding: 40px 20px; color: white; font-family: Arial, sans-serif;">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start;">
+
+                <!-- Logo và mô tả -->
+                <div class="footer-left" style="flex: 1;">
+                <h4 style="margin-bottom: 20px; font-size: 40px; margin-left: 50px">TRAO YÊU THƯƠNG<br>NHẬN HY VỌNG!</h4>
+                </div>
+
+                <!-- Thông tin liên hệ -->
+                <div class="footer-middle" style="flex: 1; text-align: left; margin-left: 130px"> <!-- Chỉnh sửa đây để căn lề phải -->
+                    <h4 style="margin-bottom: 10px; font-size: 20px;">Liên hệ với chúng tôi</h4>
+                    <p style="margin-top: 5px; font-size: 18px; line-height: 1.8;">
+                      <strong>Hotline:</strong> <a href="tel:0352430981" style="color: #ffffff; text-decoration: none;">0352430981</a><br>
+                      <strong>Email:</strong> <a href="mailto:hotro@givelove.vn" style="color: white; text-decoration: none;">hotro@givelove.vn</a><br>
+                      <strong>Địa chỉ:</strong> Số 30, Tạ Quang Bửu, Bách Khoa, Hai Bà Trưng, Hà Nội
+                    </p>
+                </div>
+            </div>
+
+            <!-- Dòng bản quyền -->
+            <div style="text-align: center; margin-top: 0px; font-size: 14px;">
+                <p>&copy; 2024 GiveLove.vn – All Rights Reserved</p>
+            </div>
+        </footer>
+
+      </body>
+      </html>

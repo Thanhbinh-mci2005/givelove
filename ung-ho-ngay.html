@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ủng Hộ Ngay</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        /* Background image and overlay */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 115%;
+            height: 150%;
+            background-image: url('1a7f1476-f821-460f-bdc8-e68c12dbe783.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.8;
+            z-index: -2;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            margin: 0 20px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        nav a:hover {
+            transform: translateY(-5px); /* Nâng lên khi hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bóng nhẹ khi hover */
+        }
+
+        .nav-left a {
+            margin: 0 30px;
+        }
+
+        .logo {
+            margin-left: 40px; /* Dịch sang bên phải */
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .donate-button {
+            background-color: #365486;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .donate-button:hover {
+            background-color: #d10000;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            text-align: center;
+            z-index: 1;
+            position: relative;
+            max-width: 700px;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+
+        }
+
+        .project {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .project img {
+            width: 200px;
+            height: 200px;
+        }
+        .project h2 {
+            margin-bottom: -10px;
+        }
+        .project h3 {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+      <nav>
+          <div class="logo">
+              <a href="index.html"><img src="z5942590383156_5619bbf6d5490789903ade2929e71df9.jpg" alt="Give Now Logo"></a>
+          </div>
+          <div class="menu">
+              <a href="index.html">Trang chủ</a>
+              <a href="du-an.php">Dự án</a>
+              <a href="ve-chung-toi.html">Về chúng tôi</a>
+              <a href="huong-dan.html">Hướng dẫn</a>
+          </div>
+          <div class="auth">
+              <a href="ung-ho-ngay.html" class="donate-button">Ủng hộ ngay</a>
+              <a href="dang-nhap.php">Đăng nhập</a>
+          </div>
+      </nav>
+  </header>
+
+<div class="container">
+    <div class="project">
+        <h2 style="text-align: center; font-size: 25px; color: #365486;">"Ngọn Lửa Yêu Thương"</h2>
+        <h3 style="text-align: center;">Quỹ Hỗ Trợ Khẩn Cấp</h3>
+        <img src="924bb568-7d5f-4ba2-ab27-e331d176cb33.jpg" alt="Ngọn Lửa Yêu Thương">
+    </div>
+    <div class="project">
+      <h2 style="text-align: center; font-size: 25px; color: #365486;">"Bước Chân Hi Vọng"</h2>
+      <h3 style="text-align: center;">Quỹ Hỗ Trợ Y Tế</h3>
+        <img src="924bb568-7d5f-4ba2-ab27-e331d176cb33.jpg" alt="Bước Chân Hi Vọng">
+    </div>
+    <div class="project">
+      <h2 style="text-align: center; font-size: 25px; color: #365486;">"Nhà Bình Yên"</h2>
+      <h3 style="text-align: center;">Quỹ Hỗ Trợ Tái Thiết Nhà Ở</h3>
+        <img src="924bb568-7d5f-4ba2-ab27-e331d176cb33.jpg" alt="Nhà Bình Yên">
+    </div>
+    <div class="project">
+      <h2 style="text-align: center; font-size: 25px; color: #365486;">"Hạt Giống Tương Lai"</h2>
+      <h3 style="text-align: center; font-size:18px ">Quỹ Hỗ Trợ Tái Thiết Nông Nghiệp</h3>
+        <img src="924bb568-7d5f-4ba2-ab27-e331d176cb33.jpg" alt="Hạt Giống Tương Lai">
+    </div>
+</div>
+
+<!-- Footer -->
+<footer style="background-color: #365486; padding: 40px 20px; color: white; font-family: Arial, sans-serif;">
+  <div class="container" style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start;">
+
+      <!-- Logo và mô tả -->
+      <div class="footer-left" style="flex: 1;">
+      <h4 style="margin-bottom: 20px; font-size: 40px; margin-left: 50px">TRAO YÊU THƯƠNG<br>NHẬN HY VỌNG!</h4>
+      </div>
+
+      <!-- Thông tin liên hệ -->
+      <div class="footer-middle" style="flex: 1; text-align: left; margin-left: 120px"> <!-- Chỉnh sửa đây để căn lề phải -->
+          <h4 style="margin-bottom: 10px; font-size: 20px;">Liên hệ với chúng tôi</h4>
+          <p style="margin-top: 5px; font-size: 18px; line-height: 1.8;">
+            <strong>Hotline:</strong> <a href="tel:0352430981" style="color: #ffffff; text-decoration: none;">0352430981</a><br>
+            <strong>Email:</strong> <a href="mailto:hotro@givelove.vn" style="color: white; text-decoration: none;">hotro@givelove.vn</a><br>
+            <strong>Địa chỉ:</strong> Số 30, Tạ Quang Bửu, Bách Khoa, Hai Bà Trưng, Hà Nội
+          </p>
+      </div>
+  </div>
+
+  <!-- Dòng bản quyền -->
+  <div style="text-align: center; margin-top: 0px; font-size: 14px;">
+      <p><br>
+        <br>
+        &copy; 2024 GiveLove.vn – All Rights Reserved</p>
+  </div>
+</footer>
+
+</body>
+</html>
