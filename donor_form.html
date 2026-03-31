@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CẬP NHẬT ỦNG HỘ</title>
+	<style>
+    	body {
+        	font-family: Arial, sans-serif;
+        	background-color: #f4f4f9;
+        	margin: 0;
+        	padding: 0;
+        	position: relative;
+    	}
+
+    	/* Reset toàn bộ phần tử */
+    	* {
+        	margin: 0;
+        	padding: 0;
+        	box-sizing: border-box;
+    	}
+
+			header {
+					background-color: white;
+					box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+					position: sticky;
+					top: 0;
+					z-index: 1000;
+			}
+
+			nav {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					padding: 10px 0;
+			}
+
+			.nav-left, .nav-right {
+					display: flex;
+					align-items: center;
+			}
+
+			nav a {
+					text-decoration: none;
+					color: #333;
+					font-size: 16px;
+					margin: 0 20px;
+					position: relative;
+					transition: transform 0.3s ease, box-shadow 0.3s ease;
+			}
+
+			nav a:hover {
+					transform: translateY(-5px); /* Nâng lên khi hover */
+					box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bóng nhẹ khi hover */
+			}
+
+			.nav-left a {
+					margin: 0 30px;
+			}
+
+			.logo {
+					margin-left: 40px; /* Dịch sang bên phải */
+			}
+
+			.logo img {
+					height: 50px;
+			}
+
+			.donate-button {
+					background-color: #365486;
+					color: white;
+					padding: 10px 20px;
+					border-radius: 5px;
+					text-decoration: none;
+					font-weight: bold;
+			}
+
+			.donate-button:hover {
+					background-color: #d10000;
+			}
+
+    	.auth {
+        	margin-left: 20px;
+        	color: #333333; /* Màu chữ đậm hơn */
+    	}
+
+    	.container {
+        	width: 100%;
+        	max-width: 600px;
+        	margin: 0 auto;
+        	padding: 20px;
+        	background-color: rgba(255, 255, 255, 0.9); /* Tạo nền trắng mờ cho form */
+        	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        	border-radius: 10px;
+        	position: relative;
+        	z-index: 2;
+    	}
+
+    	/* Điều chỉnh cỡ chữ cho tiêu đề */
+    	h1 {
+        	text-align: center;
+        	color: #365486;
+        	font-size: 50px; /* Bạn có thể thay đổi kích thước theo ý muốn */
+        	margin-top: 10px;
+    	}
+
+
+
+    	label {
+        	font-size: 16px;
+        	font-weight: bold;
+        	color: #333;
+    	}
+
+    	input[type="text"],
+    	input[type="number"],
+    	input[type="date"],
+    	select {
+        	width: 100%;
+        	padding: 10px;
+        	margin: 8px 0;
+        	display: inline-block;
+        	border: 1px solid #ccc;
+        	border-radius: 4px;
+        	box-sizing: border-box;
+    	}
+
+    	input[type="submit"] {
+        	width: 100%;
+        	background-color: #365486;
+        	color: white;
+        	padding: 14px 20px;
+        	margin: 8px 0;
+        	border: none;
+        	border-radius: 4px;
+        	cursor: pointer;
+        	font-size: 18px;
+    	}
+
+    	input[type="submit"]:hover {
+        	background-color: #2e4a6d;
+    	}
+
+    	.form-group {
+        	margin-bottom: 15px;
+    	}
+
+    	/* Thêm ảnh nền cho phần form, bắt đầu từ dưới header */
+    	body::before {
+        	content: "";
+        	background-image: url('1a7f1476-f821-460f-bdc8-e68c12dbe783.jpg'); /* Đường dẫn đến ảnh nền */
+        	background-size: cover;
+        	background-position: center;
+        	position: absolute;
+        	top: 0; /* Đặt giá trị để ảnh bắt đầu từ dưới header */
+        	left: 0;
+        	width: 100%;
+        	height: 100%;
+        	opacity: 0.8; /* Độ mờ của ảnh nền */
+        	z-index: 1;
+    	}
+
+    	.form-section {
+        	background-color: #e6f0ff; /* Màu xanh dương nhạt mờ */
+        	padding: 20px;
+        	border-radius: 8px;
+        	z-index: 2;
+        	position: relative;
+    	}
+
+    	/* Ẩn modal mặc định */
+    	.modal {
+        	display: none;
+        	position: fixed;
+        	z-index: 10;
+        	left: 0;
+        	top: 0;
+        	width: 100%;
+        	height: 100%;
+        	background-color: rgba(0, 0, 0, 0.5); /* Màu nền mờ */
+    	}
+
+    	.modal-content {
+        	background-color: #fff;
+        	margin: 15% auto;
+        	padding: 20px;
+        	border: 1px solid #888;
+        	width: 30%;
+        	border-radius: 10px;
+    	}
+
+    	.modal-content h2 {
+        	text-align: center;
+        	color: #365486;
+    	}
+
+    	.modal-content input[type="text"],
+    	.modal-content input[type="password"] {
+        	width: 100%;
+        	padding: 10px;
+        	margin: 10px 0;
+        	border: 1px solid #ccc;
+        	border-radius: 4px;
+        	box-sizing: border-box;
+    	}
+
+    	.modal-content input[type="submit"] {
+        	width: 100%;
+        	background-color: #365486;
+        	color: white;
+        	padding: 14px 20px;
+        	border: none;
+        	border-radius: 4px;
+        	cursor: pointer;
+        	font-size: 18px;
+    	}
+
+    	.modal-content input[type="submit"]:hover {
+        	background-color: #2e4a6d;
+    	}
+
+    	.close {
+        	color: #aaa;
+        	float: right;
+        	font-size: 28px;
+        	font-weight: bold;
+    	}
+
+    	.close:hover,
+    	.close:focus {
+        	color: black;
+        	text-decoration: none;
+        	cursor: pointer;
+    	}
+	</style>
+</head>
+<body>
+
+
+	<!-- Menu điều hướng, đã căn chỉnh nằm giữa và đều nhau -->
+	<!-- Header -->
+  <header>
+      <nav>
+          <div class="logo">
+              <a href="index.html"><img src="z5942590383156_5619bbf6d5490789903ade2929e71df9.jpg" alt="Give Now Logo"></a>
+          </div>
+          <div class="menu">
+              <a href="index.html">Trang chủ</a>
+              <a href="du-an.php">Dự án</a>
+              <a href="ve-chung-toi.html">Về chúng tôi</a>
+              <a href="huong-dan.html">Hướng dẫn</a>
+          </div>
+          <div class="auth">
+						  <a href="expenditure-form.html" class="donate-button">Form Sao kê</a>
+              <a href="index.html">Thoát</a>
+          </div>
+      </nav>
+  </header>
+
+
+
+<div class="container">
+	<!-- Tiêu đề Quỹ Ủng Hộ, bạn có thể điều chỉnh kích thước theo ý muốn -->
+	<h1>CẬP NHẬT ỦNG HỘ</h1>
+
+	<!-- Form nhập liệu với nền màu xanh dương nhạt -->
+	<div class="form-section">
+    	<form action="process_donation.php" method="POST">
+        	<div class="form-group">
+            	<label for="full_name">Họ và tên người ủng hộ:</label>
+            	<input type="text" id="full_name" name="full_name" placeholder="Nhập họ và tên người ủng hộ" required>
+						</div>
+						<div class="form-group">
+								<label for="phone_number">Số điện thoại:</label>
+								<input type="text" id="phone_number" name="phone_number" placeholder="Nhập số điện thoại" required>
+						</div>
+
+	        <div class="form-group">
+	            	<label for="email">email:</label>
+	            	<input type="text" id="email" name="email" placeholder="@gmail.com" required>
+         	</div>
+
+	        	<div class="form-group">
+	            	<label for="address">Địa chỉ(Tỉnh):</label>
+	            	<input type="text" id="address" name="address" placeholder="Tỉnh thành" required>
+							</div>
+						<div class="form-group">
+								<label for="amount">Số tiền ủng hộ:</label>
+								<input type="number" id="amount" name="amount" placeholder="Nhập số tiền ủng hộ" required>
+        	</div>
+        	<div class="form-group">
+            	<label for="program">Quỹ quyên góp:</label>
+            	<select id="program" name="program" required>
+                	<option value="1">Ngọn lửa yêu thương - Quỹ hỗ trợ khẩn cấp</option>
+                	<option value="2">Bước chân hi vọng - Quỹ hỗ trợ y tế</option>
+                	<option value="3">Nhà bình yên - Quỹ hỗ trợ tái thiết nhà ở</option>
+                	<option value="4">Hạt giống tương lai - Quỹ hỗ trợ tái thiết nông nghiệp</option>
+            	</select>
+        	</div>
+        	<div class="form-group">
+            	<label for="date">Ngày quyên góp:</label>
+            	<input type="date" id="date" name="date" required>
+            	<input type="submit" value="Cập nhật">
+    	</form>
+	</div>
+</div>
+
+</body>
+</html> 
