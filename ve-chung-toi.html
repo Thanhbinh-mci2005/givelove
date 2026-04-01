@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Về Chúng Tôi - GiveLove</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+          text-decoration: none;
+          color: #333;
+          font-size: 16px;
+          margin: 0 20px;
+          position: relative;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        nav a:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .donate-button {
+            background-color: #365486;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .donate-button:hover {
+            background-color: #d10000;
+        }
+
+        .banner {
+          background-image: url('VỀ CHÚNG TÔI.png');
+          background-size: cover;
+          background-position: center;
+          padding: 50px 0;
+          text-align: center;
+          color: white;
+          background-attachment: fixed;
+          position: relative;
+          z-index: 0;
+        }
+
+        .banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .banner > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .banner h1 {
+          font-size: 90px;
+          text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+          transition: transform 0.3s ease, text-shadow 0.3s ease;
+          margin-bottom: 30px;
+        }
+
+        .banner p {
+            font-size: 22px;
+            margin-bottom: 30px;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .about-section {
+            padding: 60px 0;
+            background-color: white;
+            text-align: center;
+        }
+
+        .about-section h2 {
+            margin-top: 30px;
+            font-size: 50px;
+            margin-bottom: 40px;
+        }
+
+        .about-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 50px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: justify;
+        }
+
+        .statistics {
+            background-color: #365486;
+            color: #ffffff;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .statistics h2 {
+            margin-top: 20px;
+            font-size: 40px;
+            margin-bottom: 40px;
+        }
+
+        .stat-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .stat {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+        }
+
+        .stat h3 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .stat p {
+            font-size: 18px;
+            color: #ddd;
+        }
+
+        .partner-section {
+            padding: 60px;
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+
+        .partner-section h2 {
+            font-size: 50px;
+            margin-bottom: 30px;
+        }
+
+        .partner-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .partner-logos img {
+            width: 100px;
+            margin: 10px;
+        }
+
+        /* Team Section */
+        .team-section {
+          background-color: #365486;
+          color: white;
+          text-align: center;
+          padding: 50px 0;
+        }
+
+        .team-section h2 {
+          margin-top: 20px;
+          font-size: 40px;
+          margin-bottom: 40px;
+        }
+
+        .team-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .team-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .team-row.top-row .team-member {
+            margin: 0 20px;
+        }
+
+        .team-row.bottom-row .team-member {
+            margin: 0 15px;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        footer {
+            background-color: #365486;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+      <nav>
+          <div class="logo">
+                <a href="index.html"><img src="z5942590383156_5619bbf6d5490789903ade2929e71df9.jpg" alt="Give Now Logo"></a>
+          </div>
+          <div class="menu">
+              <a href="index.html">Trang chủ</a>
+              <a href="du-an.php">Dự án</a>
+              <a href="ve-chung-toi.html">Về chúng tôi</a>
+              <a href="huong-dan.html">Hướng dẫn</a>
+          </div>
+          <div class="auth">
+              <a href="ung-ho-ngay.html" class="donate-button">Ủng hộ ngay</a>
+              <a href="dang-nhap.php">Đăng nhập</a>
+          </div>
+      </nav>
+  </header>
+
+    <!-- Banner -->
+    <div class="banner">
+        <div class="container">
+            <h1>Về chúng tôi</h1>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="about-section">
+        <div class="container">
+            <h2>GiveLove là gì?</h2>
+            <p class="about-text">
+                GiveLove là nền tảng gây quỹ cộng đồng trực tuyến, được tạo ra nhằm hỗ trợ những địa phương chịu ảnh hưởng nặng nề sau các trận bão lũ. Đặc biệt, sau bão Yagi, chúng tôi đã kết nối cộng đồng để quyên góp và khắc phục hậu quả, giúp tái thiết lại cuộc sống cho những người chịu thiệt hại.
+            </p>
+            <p class="about-text">
+                <br>GiveLove đang đồng hành cùng các dự án uy tín và ý nghĩa như "Ngọn Lửa Yêu Thương - Quỹ Hỗ Trợ Khẩn Cấp", "Bước Chân Hy Vọng - Quỹ Hỗ Trợ Y Tế", "Nhà Bình Yên - Quỹ Hỗ Trợ Tái Thiết Nhà Ở", và "Hạt Giống Tương Lai - Quỹ Hỗ Trợ Tái Thiết Nông Nghiệp". Đây là bốn dự án trọng điểm, tập trung vào việc tái thiết cộng đồng và khôi phục lại các lĩnh vực thiết yếu như y tế, nhà ở, và sản xuất nông nghiệp sau bão Yagi.
+            </p>
+            <p class="about-text">
+                <br>Với công nghệ tiên tiến và sự hỗ trợ từ các đối tác đáng tin cậy, GiveLove đảm bảo mọi hoạt động gây quỹ diễn ra minh bạch, hiệu quả, và nhanh chóng đưa sự giúp đỡ đến với những người đang cần sự giúp đỡ.
+            </p>
+        </div>
+    </div>
+
+    <!-- Statistics Section -->
+    <div class="statistics">
+        <div class="container">
+            <h2>Những con số biết nói</h2>
+            <div class="stat-grid">
+                <div class="stat">
+                    <h3>4</h3>
+                    <p>Dự án</p>
+                </div>
+                <div class="stat">
+                    <h3>25.470</h3>
+                    <p>Lượt ủng hộ</p>
+                </div>
+                <div class="stat">
+                    <h3>10.2 tỷ</h3>
+                    <p>Tiền ủng hộ</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="team-section">
+      <div class="container">
+        <h2>Đội ngũ của chúng tôi</h2>
+        <div class="team-grid">
+          <!-- Hàng trên: Trưởng Ban và Phó Ban -->
+          <div class="team-row top-row">
+            <div class="team-member">
+              <img src="5 (1).png" alt="Đỗ Thanh Bình">
+              <h3>Đỗ Thanh Bình</h3>
+              <p>Trưởng Ban Quản lý GiveLove</p>
+            </div>
+            <div class="team-member">
+              <img src="6 (1).png" alt="Nguyễn Văn Nghĩa">
+              <h3>Nguyễn Văn Nghĩa</h3>
+              <p>Phó Ban Quản lý GiveLove</p>
+            </div>
+          </div>
+          <!-- Hàng dưới: Các quản lý dự án -->
+          <div class="team-row bottom-row">
+            <div class="team-member">
+              <img src="4 (2).png" alt="Nguyễn Hoàng Hạnh">
+              <h3>Nguyễn Hoàng Hạnh</h3>
+              <p>Quản lý Dự án "Ngọn Lửa Yêu Thương"</p>
+            </div>
+            <div class="team-member">
+              <img src="1 (2).png" alt="Hoàng Thị Mỹ Tâm">
+              <h3>Hoàng Thị Mỹ Tâm</h3>
+              <p>Quản lý Dự án "Bước Chân Hi Vọng"</p>
+            </div>
+            <div class="team-member">
+              <img src="3.png" alt="Lương Thị Bạch Dương">
+              <h3>Lương Thị Bạch Dương</h3>
+              <p>Quản lý Dự án "Nhà Bình Yên"</p>
+            </div>
+            <div class="team-member">
+              <img src="2 (1).png" alt="Nguyễn Trung Kiên">
+              <h3>Nguyễn Trung Kiên</h3>
+              <p>Quản lý Dự án "Hạt Giống Tương Lai"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partner Section -->
+    <div class="partner-section">
+        <div class="container">
+            <h2>Đối tác của GiveLove</h2>
+            <div class="partner-logos">
+                <img style="width: 100%; max-width: 150px;" src="logo neu.png" alt="Partner 1">
+                <img style="width: 100%; max-width: 150px;" src="logo bsneu.jpg" alt="Partner 2">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background-color: #365486; padding: 40px 20px; color: white; font-family: Arial, sans-serif;">
+      <div class="container" style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start;">
+
+          <!-- Logo và mô tả -->
+          <div class="footer-left" style="flex: 1;">
+          <h4 style="margin-bottom: 20px; font-size: 40px; margin-left: 50px">TRAO YÊU THƯƠNG<br>NHẬN HY VỌNG!</h4>
+          </div>
+
+          <!-- Thông tin liên hệ -->
+          <div class="footer-middle" style="flex: 1; text-align: left; margin-left: 130px"> <!-- Chỉnh sửa đây để căn lề phải -->
+              <h4 style="margin-bottom: 10px; font-size: 20px;">Liên hệ với chúng tôi</h4>
+              <p style="margin-top: 5px; font-size: 18px; line-height: 1.8;">
+                <strong>Hotline:</strong> <a href="tel:0352430981" style="color: #ffffff; text-decoration: none;">0352430981</a><br>
+                <strong>Email:</strong> <a href="mailto:hotro@givelove.vn" style="color: white; text-decoration: none;">hotro@givelove.vn</a><br>
+                <strong>Địa chỉ:</strong> Số 30, Tạ Quang Bửu, Bách Khoa, Hai Bà Trưng, Hà Nội
+              </p>
+          </div>
+      </div>
+
+      <!-- Dòng bản quyền -->
+      <div style="text-align: center; margin-top: 0px; font-size: 14px;">
+          <p><br>
+            <br>
+            &copy;2024 GiveLove.vn – All Rights Reserved</p>
+      </div>
+  </footer>
+
+</body>
+</html>
